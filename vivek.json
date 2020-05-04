@@ -1,0 +1,25 @@
+{
+"builders": [
+    {
+      "ami_name": "packer-linux-aws-demo-{{timestamp}}",
+      "instance_type": "t2.micro",
+      "region": "us-east-2",
+      "source_ami": "ami-0a54aef4ef3b5f881",
+      "ssh_username": "ec2-user",
+      "ssh_keypair_name": "renga123",
+      "ssh_private_key_file":"renga123.pem",
+      "type": "amazon-ebs"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "./install.sh",
+      "destination": "/home/ec2-user/"
+    },
+    {
+      "type": "shell",
+      "script": "./install.sh"
+    }
+   ]
+}
